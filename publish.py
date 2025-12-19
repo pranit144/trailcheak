@@ -22,7 +22,7 @@ remotes = subprocess.run(
 if "origin" not in remotes:
     print("🔗 Adding GitHub remote")
     run(
-        f"git remote add origin https://{os.getenv('GITHUB_TOKEN')}@github.com/pranit144/weather-app.git"
+        f"git remote add origin https://{os.getenv('GITHUB_TOKEN')}@github.com/pranit144/trailcheak.git"
     )
 else:
     print("🔁 GitHub remote already exists")
