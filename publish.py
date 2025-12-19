@@ -40,7 +40,8 @@ print("✅ GitHub updated")
 # =======================
 HF_USERNAME = "pranit144"   # 👈 CHANGE THIS
 HF_REPO_NAME = "trailcheak"
-HF_REPO_TYPE = "docker"             # "space" or "model"
+HF_REPO_TYPE = "space"   
+HF_SPACE_SDK = "docker"           # "space" or "model"
 
 print("🤗 Publishing to Hugging Face...")
 
