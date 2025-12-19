@@ -1,4 +1,3 @@
-import os
 import subprocess
 
 def run(cmd):
@@ -6,12 +5,17 @@ def run(cmd):
 
 print("🚀 Publishing project...")
 
+# 🔒 HARD-CONFIGURED REPO
+GITHUB_REPO = "https://github.com/pranit144/trailcheak.git"
+
 # Git setup
 run("git init")
 run("git add .")
 run('git commit -m "Auto publish" || echo "No changes to commit"')
 
-# Check remote
+# Always ensure correct remote
+print("🔗 Ensuring GitHub remote is trailcheak")
+
 remotes = subprocess.run(
     "git remote",
     shell=True,
@@ -20,14 +24,11 @@ remotes = subprocess.run(
 ).stdout
 
 if "origin" not in remotes:
-    print("🔗 Adding GitHub remote")
-    run(
-        f"git remote add origin https://{os.getenv('GITHUB_TOKEN')}@github.com/pranit144/trailcheak.git"
-    )
+    run(f"git remote add origin {GITHUB_REPO}")
 else:
-    print("🔁 GitHub remote already exists")
+    run(f"git remote set-url origin {GITHUB_REPO}")
 
 run("git branch -M main")
 run("git push -u origin main")
 
-print("✅ GitHub updated")
+print("✅ Successfully pushed to trailcheak 🚀")
